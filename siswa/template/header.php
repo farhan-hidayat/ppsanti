@@ -4,7 +4,7 @@ session_start();
 // cek apakah yang mengakses halaman ini sudah login
 if ($_SESSION['level'] == "") {
   header("location:../index.php?pesan=belum_login");
-} elseif ($_SESSION['level'] != "Admin") {
+} elseif ($_SESSION['level'] != "Siswa") {
   header("location:../error_page/403.php");
 }
 
