@@ -9,7 +9,7 @@ include('template/sidebar.php');
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Dashboard Admin</h1>
+            <h1>Dashboard Siswa</h1>
         </div>
 
         <div class="section-body">

@@ -1,14 +1,7 @@
 <?php
-$servername = "localhost";
-$database = "ppsanti";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
+$koneksi = mysqli_connect("localhost", "root", "", "ppsanti");
+
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+if (mysqli_connect_errno()) {
+    echo "Koneksi database gagal : " . mysqli_connect_error();
 }
-echo "Connected successfully";
-mysqli_close($conn);
-?>
