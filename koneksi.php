@@ -1,5 +1,5 @@
 <?php
-$koneksi = mysqli_connect("localhost", "root", "", "ppsanti");
+$koneksi = mysqli_connect("localhost", "root", "", "db_aplikasi");
 
 // Check connection
 if (mysqli_connect_errno()) {

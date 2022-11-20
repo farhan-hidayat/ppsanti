@@ -18,12 +18,18 @@
 <script src="../assets/js/stisla.js"></script>
 
 <!-- JS Libraies -->
+<script src="../node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="../node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js"></script>
+<script src="../node_modules/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 <!-- Template JS File -->
 <script src="../assets/js/scripts.js"></script>
 <script src="../assets/js/custom.js"></script>
 
 <!-- Page Specific JS File -->
+<script src="../assets/js/page/modules-datatables.js"></script>
+<script src="../assets/js/page/features-post-create.js"></script>
 </body>
 
 </html>

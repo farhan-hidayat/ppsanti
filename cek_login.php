@@ -7,11 +7,11 @@ require 'koneksi.php';
 
 // menangkap data yang dikirim dari form login
 $email = $_POST['email'];
-$password = sha1($_POST['password']);
+$password = md5($_POST['password']);
 
 
 // menyeleksi data user dengan email dan password yang sesuai
-$login = mysqli_query($koneksi, "select * from user where email_user='$email' and password_user='$password'");
+$login = mysqli_query($koneksi, "select * from tb_user where email_user='$email' and password_user='$password'");
 // menghitung jumlah data yang ditemukan
 $cek = mysqli_num_rows($login);
 
@@ -27,6 +27,7 @@ if ($cek > 0) {
         // buat session login dan email
         $_SESSION['email'] = $email;
         $_SESSION['level'] = "Admin";
+        $_SESSION['nama'] = $data['id_user'];
         $_SESSION['nama'] = $data['nama_user'];
         // alihkan ke halaman dashboard admin
         header("location:admin/dashboard.php");
@@ -36,6 +37,7 @@ if ($cek > 0) {
         // buat session login dan email
         $_SESSION['email'] = $email;
         $_SESSION['level'] = "Siswa";
+        $_SESSION['nama'] = $data['id_user'];
         $_SESSION['nama'] = $data['nama_user'];
         // alihkan ke halaman dashboard siswa
         header("location:siswa/dashboard.php");
