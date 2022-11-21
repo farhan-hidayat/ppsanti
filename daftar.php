@@ -30,90 +30,86 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
+                                <div class="section-header-back">
+                                    <a href="index.php" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+                                </div>
                                 <h4>Register</h4>
                             </div>
 
                             <div class="card-body">
-                                <form method="POST">
+                                <form method="POST" action="">
                                     <div class="row">
-                                        <div class="form-group col-6">
-                                            <label for="first_name">First Name</label>
-                                            <input id="first_name" type="text" class="form-control" name="first_name" autofocus>
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label for="last_name">Last Name</label>
-                                            <input id="last_name" type="text" class="form-control" name="last_name">
+                                        <div class="form-group col-12">
+                                            <label for="first_name">Nama Lengkap</label>
+                                            <input id="first_name" type="text" name="nama" class="form-control" name="first_name" autofocus required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email">
+                                        <input id="email" type="email" name="email" class="form-control" name="email" required>
                                         <div class="invalid-feedback">
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label for="password" class="d-block">Password</label>
-                                            <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password">
+                                            <label for="password" class="d-block">Katasandi</label>
+                                            <input id="password" type="password" name="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" required>
                                             <div id="pwindicator" class="pwindicator">
                                                 <div class="bar"></div>
                                                 <div class="label"></div>
                                             </div>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label for="password2" class="d-block">Password Confirmation</label>
-                                            <input id="password2" type="password" class="form-control" name="password-confirm">
+                                            <label for="password2" class="d-block">Ulangi Katasandi</label>
+                                            <input id="password2" type="password" class="form-control" name="password-confirm" required>
                                         </div>
                                     </div>
 
-                                    <div class="form-divider">
-                                        Your Home
-                                    </div>
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label>Country</label>
-                                            <select class="form-control selectric">
-                                                <option>Indonesia</option>
-                                                <option>Palestine</option>
-                                                <option>Syria</option>
-                                                <option>Malaysia</option>
-                                                <option>Thailand</option>
-                                            </select>
+                                            <label>Nomor HP</label>
+                                            <input type="number" name="hp" class="form-control" required>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label>Province</label>
-                                            <select class="form-control selectric">
-                                                <option>West Java</option>
-                                                <option>East Java</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-6">
-                                            <label>City</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label>Postal Code</label>
-                                            <input type="text" class="form-control">
+                                            <label>Alamat</label>
+                                            <input type="text" name="alamat" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="agree" class="custom-control-input" id="agree">
-                                            <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                        <button type="submit" name="regis" class="btn btn-primary btn-lg btn-block">
                                             Register
                                         </button>
                                     </div>
                                 </form>
+                                <?php
+                                require 'koneksi.php';
+                                if (isset($_POST['regis'])) {
+                                    $nama = $_POST['nama'];
+                                    $email = $_POST['email'];
+                                    $password = md5($_POST['password']);
+                                    $password_confirm = md5($_POST['password-confirm']);
+                                    $level = "siswa";
+                                    $alamat = $_POST['alamat'];
+                                    $hp = $_POST['hp'];
+
+                                    $ambil = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE email_user='$email'");
+                                    $yangcocok = $ambil->num_rows;
+                                    if ($password_confirm != $password) {
+                                        echo "<script>alert('Katasandi tidak sama');</script>";
+                                        echo "<script>location='daftar.php';</script>";
+                                    } elseif ($yangcocok == 1) {
+                                        echo "<script>alert('Pendaftaran Gagal, Email Sudah Terdaftar');</script>";
+                                        echo "<script>location='daftar.php';</script>";
+                                    } else {
+                                        $query = mysqli_query($koneksi, "INSERT INTO tb_user VALUES (null,'$nama','$email','$password','$level','$alamat','$hp')");
+                                        echo "<script>alert('Pendaftaran Berhasil, Silahkan Login');</script>";
+                                        echo "<script>location='index.php';</script>";
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="simple-footer">
