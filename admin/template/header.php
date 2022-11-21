@@ -30,6 +30,6 @@ $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
   <link rel="stylesheet" href="../node_modules/bootstrap-daterangepicker/daterangepicker.css">
 
   <!-- Template CSS -->
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/admin/css/style.css">
+  <link rel="stylesheet" href="../assets/admin/css/components.css">
 </head>

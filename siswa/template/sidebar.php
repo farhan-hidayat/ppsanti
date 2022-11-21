@@ -7,14 +7,14 @@
       <a href="index.html">St</a>
     </div>
     <ul class="sidebar-menu">
-      <li class="active"><a class="nav-link" href="dashboard.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+      <li class="<?php echo $uriSegments[3] == 'dashboard.php' ? 'active' : '';  ?>"><a class="nav-link" href="dashboard.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
       <li class="menu-header">Starter</li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown <?php echo $uriSegments[3] == 'video.php' || $uriSegments[3] == 'lagu.php' || $uriSegments[3] == 'kuis.php' ? 'active' : '';  ?>">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Master Data</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="">Video</a></li>
-          <li><a class="nav-link" href="">Music</a></li>
-          <li><a class="nav-link" href="">Quiz</a></li>
+          <li class="<?php echo $uriSegments[3] == 'video.php' ? 'active' : '';  ?>"><a class="nav-link" href="video.php">Video</a></li>
+          <li class="<?php echo $uriSegments[3] == 'lagu.php' ? 'active' : '';  ?>"><a class="nav-link" href="lagu.php">Lagu</a></li>
+          <li class="<?php echo $uriSegments[3] == 'kuis.php' ? 'active' : '';  ?>"><a class="nav-link" href="kuis.php">Kuis</a></li>
         </ul>
       </li>
       <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
