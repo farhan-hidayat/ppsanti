@@ -27,8 +27,8 @@ if ($cek > 0) {
         // buat session login dan email
         $_SESSION['email'] = $email;
         $_SESSION['level'] = "Admin";
-        $_SESSION['nama'] = $data['id_user'];
-        $_SESSION['nama'] = $data['nama_user'];
+        $_SESSION['id'] = $data['id_user'];
+        $_SESSION['nama'] = $data['nama_lengkap'];
         // alihkan ke halaman dashboard admin
         header("location:admin/dashboard.php");
 
@@ -37,7 +37,7 @@ if ($cek > 0) {
         // buat session login dan email
         $_SESSION['email'] = $email;
         $_SESSION['level'] = "Siswa";
-        $_SESSION['nama'] = $data['id_user'];
+        $_SESSION['id'] = $data['id_user'];
         $_SESSION['nama'] = $data['nama_user'];
         // alihkan ke halaman dashboard siswa
         header("location:siswa/dashboard.php");

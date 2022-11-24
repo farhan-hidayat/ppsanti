@@ -15,7 +15,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title"><?php echo $_SESSION['level']; ?></div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <a href="profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
